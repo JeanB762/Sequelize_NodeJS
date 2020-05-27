@@ -27,10 +27,6 @@ module.exports = {
         on_update: 'CASCADE',
         on_delete: 'CASCADE',
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

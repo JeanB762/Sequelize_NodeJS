@@ -8,13 +8,14 @@ class Tech extends Model {
       },
       {
         sequelize: connection,
+        tableName: 'techs',
       }
     );
   }
 
   static associate(models) {
     this.belongsToMany(models.User, {
-      foreignKey: 'user_id',
+      foreignKey: 'tech_id',
       through: 'user_techs',
       as: 'users',
     });
