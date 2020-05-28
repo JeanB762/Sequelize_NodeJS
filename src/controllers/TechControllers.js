@@ -2,7 +2,19 @@ import Tech from '../models/Tech';
 import User from '../models/User';
 
 export default {
-  async index(req, res) {},
+  async index(req, res) {
+    const { user_id } = req.params;
+
+    const user = await User.findByPk(user_id, {
+      include: {
+        association: 'techs', // Retorna as associações com a tabela techs
+        attributes: ['name'], // Especifica quais campos estarão no objeto
+        through: { attributes: [] }, // Especifica os atributos da tabela user_techs
+      },
+    });
+
+    return res.json(user.techs);
+  },
 
   async store(req, res) {
     const { user_id } = req.params;
